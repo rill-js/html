@@ -1,0 +1,38 @@
+{
+  "name": "@rill/html",
+  "version": "0.1.0",
+  "description": "HTML views for Rill.",
+  "author": "Dylan Piercey <pierceydylan@gmail.com>",
+  "main": "server/index.js",
+  "browser": "client/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rill-js/html"
+  },
+  "keywords": [
+    "universal",
+    "isomorphic",
+    "handlebars",
+    "mustache",
+    "jade",
+    "lodash",
+    "underscore",
+    "views",
+    "render",
+    "rill"
+  ],
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "jsdom": "^7.2.0",
+    "jsdom-global": "^1.6.1",
+    "mocha": "^2.3.4",
+    "rill": "^0.2.11",
+    "supertest": "^1.1.0"
+  },
+  "dependencies": {
+    "diffhtml": "^0.5.1",
+    "statuses": "^1.2.1"
+  }
+}
