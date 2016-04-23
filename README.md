@@ -3,7 +3,7 @@
 
 # Rill HTML
 Isomorphic html rendering middleware for Rill.
-Uses https://github.com/patrick-steele-idem/morphdom to update html in the browser.
+Uses [diffhtml](https://github.com/tbranyen/diffhtml) to update html in the browser.
 
 # Installation
 

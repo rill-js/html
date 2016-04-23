@@ -1,6 +1,6 @@
 'use strict'
 
-var diff = require('morphdom')
+var diff = require('diffhtml')
 var statuses = require('statuses')
 var htmlReg = /^\s*</
 
@@ -16,7 +16,7 @@ module.exports = function (opts) {
         res.get('Location')
         ) return
 
-      diff(document.documentElement, res.body)
+      diff.outerHTML(document.documentElement, res.body)
     })
   }
 }
