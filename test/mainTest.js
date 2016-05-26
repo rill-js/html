@@ -75,7 +75,7 @@ describe('Rill/HTML', function () {
       .expect('content-type', 'text/html; charset=UTF-8')
       .expect(function () {
         assert.equal(document.title, 'Test')
-        assert.equal(document.body.innerHTML, 'content')
+        assert.equal(document.body.innerHTML.trim(), 'content')
       })
       .end(function (err) {
         if (err) return done(err)
@@ -85,7 +85,7 @@ describe('Rill/HTML', function () {
           .expect('content-type', 'text/html; charset=UTF-8')
           .expect(function () {
             assert.equal(document.title, 'Test2')
-            assert.equal(document.body.innerHTML, 'content2')
+            assert.equal(document.body.innerHTML.trim(), 'content2')
           })
           .end(done)
       })
