@@ -3,7 +3,7 @@
 
 # Rill HTML
 Isomorphic html rendering middleware for Rill.
-Uses [diffhtml](https://github.com/tbranyen/diffhtml) to update html in the browser.
+Uses [set-dom](https://github.com/DylanPiercey/set-dom) to update html in the browser.
 
 # Installation
 
