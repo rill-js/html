@@ -2,7 +2,7 @@
 [![Join the chat at https://gitter.im/rill-js/rill](https://badges.gitter.im/rill-js/rill.svg)](https://gitter.im/rill-js/rill?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # Rill HTML
-Isomorphic html rendering middleware for Rill.
+Universal html rendering middleware for [Rill](https://github.com/rill-js/rill).
 Uses [set-dom](https://github.com/DylanPiercey/set-dom) to update html in the browser.
 
 # Installation
@@ -15,9 +15,6 @@ npm install @rill/html
 # Example
 
 ```javascript
-const app       = require("rill")();
-const htmlViews = require("@rill/html");
-
 // We will use handlebars for our example.
 const hbs = require("handlebars");
 const homePage = hbs.compile(`
@@ -33,9 +30,15 @@ const homePage = hbs.compile(`
 	</html>
 `);
 
-app.use(htmlViews());
+// Setup a universal Rill application.
+const Rill = require("rill");
+const app = Rill();
 
-app.use(({ req, res }, next)=> {
+// Setup the html diffing/rendering middleware.
+app.use(require("@rill/html")());
+
+// Setup a homepage route.
+app.get("/", ({ req, res }, next)=> {
 	// Just set the response body to some html.
 	// updates the dom in the browser, or render a string in the server.
 	res.body = homePage({ title: "@rill/html" });
