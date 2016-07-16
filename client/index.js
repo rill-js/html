@@ -17,6 +17,7 @@ module.exports = function (opts) {
         ) return
 
       diff(document, res.body)
+      res.set('Content-Type', 'text/html; charset=UTF-8')
     })
   }
 }
