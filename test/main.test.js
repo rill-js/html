@@ -1,4 +1,4 @@
-require('jsdom-global')()
+'use strict'
 
 var assert = require('assert')
 var agent = require('supertest')
@@ -9,14 +9,14 @@ var clientViews = require('../client')
 describe('Rill/HTML', function () {
   it('should work on the server', function (done) {
     var view = `
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<title>Test</title>
-			</head>
-			<body>content</body>
-		</html>
-	`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Test</title>
+        </head>
+        <body>content</body>
+      </html>
+    `
 
     var request = agent(Rill()
       .use(serverViews())
@@ -40,24 +40,24 @@ describe('Rill/HTML', function () {
 
   it('should work on the client', function (done) {
     var view1 = `
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<title>Test</title>
-			</head>
-			<body>content</body>
-		</html>
-	`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Test</title>
+        </head>
+        <body>content</body>
+      </html>
+    `
 
     var view2 = `
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<title>Test2</title>
-			</head>
-			<body>content2</body>
-		</html>
-	`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Test2</title>
+        </head>
+        <body>content2</body>
+      </html>
+    `
 
     var request = agent(Rill()
       .use(clientViews())
