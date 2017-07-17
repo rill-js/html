@@ -5,6 +5,9 @@ var statuses = require('statuses')
 var htmlReg = /^\s*</
 
 module.exports = function (opts) {
+  var root = (opts && opts.root)
+    ? document.querySelector(opts.root)
+    : document
   return function renderHTML (ctx, next) {
     var res = ctx.res
     return next().then(function () {
@@ -16,7 +19,7 @@ module.exports = function (opts) {
         res.get('Location')
         ) return
 
-      diff(document, res.body)
+      diff(root, res.body)
       res.set('Content-Type', 'text/html; charset=UTF-8')
     })
   }

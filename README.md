@@ -3,7 +3,7 @@
   <img src="https://raw.githubusercontent.com/rill-js/rill/master/Rill-Icon.jpg" alt="Rill"/>
   <br/>
   @rill/html
-	<br/>
+  <br/>
 
   <!-- Stability -->
   <a href="https://nodejs.org/api/documentation.html#documentation_stability_index">
@@ -44,45 +44,55 @@ npm install @rill/html
 // We will use handlebars for our example.
 const hbs = require('handlebars')
 const homePage = hbs.compile(`
-	<html>
-		<head>
-			<title>My App</title>
-			<meta name="description" content="Rill Application">
-		</head>
-		<body>
-			{{title}}
-			<script src="/app.js"/>
-		</body>
-	</html>
+  <html>
+    <head>
+      <title>My App</title>
+      <meta name="description" content="Rill Application">
+    </head>
+    <body>
+      {{title}}
+      <script src="/app.js"/>
+    </body>
+  </html>
 `)
 
 // Setup a universal Rill application.
 const app = require('rill')()
 
 // Setup the html diffing/rendering middleware.
-app.use(require('@rill/html')());
+app.use(require('@rill/html')())
 
 // Setup a homepage route.
 app.get('/', ({ req, res }, next)=> {
-	// Just set the response body to some html.
-	// updates the dom in the browser, or render a string in the server.
-	res.body = homePage({ title: '@rill/html' });
+  // Just set the response body to some html.
+  // updates the dom in the browser, or render a string in the server.
+  res.body = homePage({ title: '@rill/html' });
 
-	// On the server the final response will be.
-	`
-		<!DOCTYPE html>
-		<html>
-			<head>
-				<title>My App</title>
-				<meta name="description" content="Rill Application">
-			</head>
-			<body>
-				@rill/html
-				<script src="/app.js"></script>
-			</body>
-		</html>
-	`
-});
+  // On the server the final response will be.
+  `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>My App</title>
+        <meta name="description" content="Rill Application">
+      </head>
+      <body>
+        @rill/html
+        <script src="/app.js"></script>
+      </body>
+    </html>
+  `
+})
+```
+
+# Sub page rendering.
+Sometimes the goal is not to diff the entire page, or you want to use something like [@rill/page](https://github.com/rill-js/page) to handle the document.
+
+@rill/html adds the ability to change the root element with an option for this purpose.
+
+```js
+// Use a query selector to set the root element to diff.
+app.use(require('@rill/html')({ root: '#my-element' }))
 ```
 
 ### Contributions
