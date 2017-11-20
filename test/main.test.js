@@ -22,7 +22,7 @@ describe('Rill/HTML', function () {
       .use(serverViews())
       .get('/', function (ctx, next) {
         ctx.res.body = view
-      }).listen())
+      }).listen().unref())
 
     request
       .get('/')
@@ -67,7 +67,7 @@ describe('Rill/HTML', function () {
       .get('/2', function (ctx, next) {
         ctx.res.body = view2
       })
-      .listen())
+      .listen().unref())
 
     request
       .get('/1')
